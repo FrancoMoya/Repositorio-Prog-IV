@@ -11,6 +11,7 @@ SECRET_KEY = 'django-insecure-i0n&$uz4gf(nawukhrdo6kc2=%(@kyvxftl*ksinuf2ocybm71
 
 # # Application definition
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -20,6 +21,8 @@ INSTALLED_APPS = [
     #Local Apps
     'aplicaciones.departamento',
     'aplicaciones.empleado',
+    'aplicaciones.producto',
+    'aplicaciones.categoria',
 ]
 
 MIDDLEWARE = [
@@ -52,3 +55,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'empleados.wsgi.application'
 LANGUAGE_CODE = 'es-ar'
+
+#JAZZMIN SETTINGS
+JAZZMIN_SETTINGS = {
+    "site_header": "Administración",
+    "site_title": "Administración",
+}
+JAZZMIN_SETTINGS["show_ui_builder"] = True
