@@ -23,6 +23,14 @@ INSTALLED_APPS = [
     'aplicaciones.empleado',
     'aplicaciones.producto',
     'aplicaciones.categoria',
+    'aplicaciones.carrito',
+    'aplicaciones.descuentos',
+    'aplicaciones.detalle_pedido',
+    'aplicaciones.finanzas',
+    'aplicaciones.pagos',
+    'aplicaciones.pedido',
+    'aplicaciones.stock',
+    'aplicaciones.proveedor',
 ]
 
 MIDDLEWARE = [
@@ -40,7 +48,7 @@ ROOT_URLCONF = 'empleados.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': [BASE_DIR/'templates'], # Direccion de los templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
