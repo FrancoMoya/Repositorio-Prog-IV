@@ -9,6 +9,7 @@ class ProductoAdmin (admin.ModelAdmin):
         'medida',
         'tipo_medida',    # Para poder listar los datos que quiero en tabla
         'precio',
+        'total_stock',
     )
     search_fields = ['nombre','id']
     list_filter = ['categoria']

@@ -18,7 +18,11 @@ class Producto (models.Model):
     descripcion = models.TextField('Descripción')  # Campo de texto largo
     precio = models.DecimalField('Precio ($)', max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])  # Campo decimal (10 digitos incluyendo dec)(2 decimales)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    # Relacion entre producto y categoria (De 1 a muchos)
+    # Relacion entre producto y categoria (De muchos a 1)
+    def total_stock(self):
+        total = sum(stock.cantidad for stock in self.stock_set.all())  # Itera por cada producto relacionado a su stock,cantidad y lo suma
+        return total
+    total_stock.short_description = "Total de Stock"  # Para elegir el nombre personalizado desde la vista del administrador de stock
     
     class Meta:
         verbose_name = ('Producto')

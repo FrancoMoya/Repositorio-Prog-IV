@@ -8,6 +8,7 @@ class StockAdmin (admin.ModelAdmin):
         'cantidad',
         'fecha_venc',
         'numero_lote',
+        'proveedor',
     )
     search_fields = ['producto']
     list_filter =['producto']
