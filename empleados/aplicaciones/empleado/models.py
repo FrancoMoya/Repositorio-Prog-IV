@@ -23,7 +23,7 @@ class Empleado (models.Model):
     class Meta:
         verbose_name = ('Mi empleado')
         verbose_name_plural = ('Empleados de la empresa')
-        ordering = ['nombre', 'apellido']
+        ordering = ['nombre',]
         unique_together = ('nombre', 'departamento')
     
     def __str__(self):
