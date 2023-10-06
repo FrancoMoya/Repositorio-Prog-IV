@@ -18,11 +18,16 @@ from django.contrib import admin
 from django.urls import path
 #Importo la vista
 from aplicaciones.empleado.views import IndexView, PruebaListVIew, ProductosView
+from aplicaciones.usuario import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',IndexView.as_view(), name = 'home'),
-    path('productos/',ProductosView.as_view(), name = 'productos'),
-    path('lista/',PruebaListVIew.as_view()),
-    
+    path('home/', IndexView.as_view(), name = 'home'),
+    path('productos/', ProductosView.as_view(), name = 'productos'),
+    path('lista/', PruebaListVIew.as_view()),
+    path('', views.homee, name = 'homee'),
+    path('signup/', views.signup, name = 'signup'),
+    path('productoss/', views.productos, name = 'productoss'),
+    path('logout/', views.cerrarsesion, name = 'logout'),
+    path('login/', views.iniciarsesion, name = 'login')
 ]

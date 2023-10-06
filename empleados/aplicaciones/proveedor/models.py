@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Proveedor (models.Model):
+    id_proveedor = models.BigAutoField('ID', primary_key=True)
     nombre = models.CharField('Nombre', max_length=50)
     telefono = models.PositiveIntegerField('Teléfono')
     direccion = models.CharField('Dirección', max_length=50)

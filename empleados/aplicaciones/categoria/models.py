@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Categoria (models.Model):
+    id_categoria = models.BigAutoField('ID', primary_key=True)
     nombre = models.CharField('Nombre', max_length=30,)    # blank=True (permite vacios) | Max_length ancho  | El 1er valor es la etiqueta
     sigla = models.CharField('Sigla', max_length=10,)    # Por defecto NO permite  #El blank si permite o no blancos
     # default='ValorPredeterminado' (hace que inicie con ese valor)

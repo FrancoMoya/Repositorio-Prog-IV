@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'aplicaciones.descuentos',
     'aplicaciones.detalle_pedido',
     'aplicaciones.finanzas',
-    'aplicaciones.pagos',
     'aplicaciones.pedido',
     'aplicaciones.stock',
     'aplicaciones.proveedor',

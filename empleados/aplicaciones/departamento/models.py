@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Departamento (models.Model):
+    id_departamento = models.BigAutoField('ID', primary_key=True)
     nombre = models.CharField('Nombre', max_length=35)    # blank=True (permite vacios) | Max_length ancho  | El 1er valor es la etiqueta
     sigla = models.CharField('Sigla', max_length=10)    # Por defecto NO permite  #El blank si permite o no blancos
     activo = models.BooleanField('¿Está activo?', default= False)     #Un campo boolean  | Si por defecto venia activo o no

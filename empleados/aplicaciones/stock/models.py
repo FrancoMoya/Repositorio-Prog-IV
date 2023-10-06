@@ -3,6 +3,7 @@ from aplicaciones.producto.models import Producto
 from aplicaciones.proveedor.models import Proveedor
 # Create your models here.
 class Stock (models.Model):
+    id_stock = models.BigAutoField('ID', primary_key=True)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField('Cantidad')
     fecha_venc = models.DateField('Fecha de Vencimiento')

@@ -11,14 +11,15 @@ class Producto (models.Model):
         ('3', 'Mls'),
         ('4', 'Lts'),
     )
+    id_producto = models.BigAutoField('ID', primary_key=True)
     nombre = models.CharField('Nombre', max_length=50)
-    id = models.CharField('ID', max_length=50, primary_key=True)
+    codigo = models.CharField('Código', max_length=50)
     medida = models.DecimalField('Medida', max_digits=6, decimal_places=2)
     tipo_medida = models.CharField('Tipo de medida', max_length=1, choices=MEDIDAS_CHOICES)
     descripcion = models.TextField('Descripción')  # Campo de texto largo
     precio = models.DecimalField('Precio ($)', max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])  # Campo decimal (10 digitos incluyendo dec)(2 decimales)
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    # Relacion entre producto y categoria (De muchos a 1)
+    categoria = models.ManyToManyField(Categoria)
+    # Relacion entre producto y categoria (De muchos a muchos)
     def total_stock(self):
         total = sum(stock.cantidad for stock in self.stock_set.all())  # Itera por cada producto relacionado a su stock,cantidad y lo suma
         return total
@@ -28,7 +29,7 @@ class Producto (models.Model):
         verbose_name = ('Producto')
         verbose_name_plural = ('Productos')
         ordering = ['nombre']
-        unique_together = ('nombre', 'id', 'tipo_medida', 'medida')
+        unique_together = ('nombre', 'codigo', 'tipo_medida', 'medida')
     
     def __str__(self):
-        return self.id+' - '+self.nombre
+        return self.codigo+' - '+self.nombre
