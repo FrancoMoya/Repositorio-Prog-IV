@@ -2,14 +2,14 @@
 
 
 {% block content %}
-<h1>Hola signup</h1>
+<h1>Hola registro</h1>
 
 {{error}}
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button>
-        Signup
+        Registrarse
     </button>
 </form>
 

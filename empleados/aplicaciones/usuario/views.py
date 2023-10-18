@@ -5,12 +5,13 @@ from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 
-def homee (request):
-    return render(request, 'usuario/homee.html')
 
-def signup (request):
+def home (request):
+    return render(request, 'usuario/home.html')
+
+def registro (request):
     if request.method == 'GET':
-        return render(request, 'usuario/signup.html',{
+        return render(request, 'usuario/registro.html',{
             'form': UserCreationForm
         })
     else:
@@ -19,25 +20,22 @@ def signup (request):
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('productoss')
+                return redirect('productos')
             except IntegrityError:
-                return render(request, 'usuario/signup.html',{
+                return render(request, 'usuario/registro.html',{
                     'form': UserCreationForm,
                     'error': 'Usuario ya existe',
                 })
-        return render(request, 'usuario/signup.html',{
+        return render(request, 'usuario/registro.html',{
             'form': UserCreationForm,
             'error': 'Contraseña incorrecta',
             })
 
-def productos (request):
-    return render(request, 'producto/producto.html')
-
-def cerrarsesion (request):
+def cerrar_sesion (request):
     logout(request)
-    return redirect('homee')
+    return redirect('home')
 
-def iniciarsesion (request):
+def iniciar_sesion (request):
     if request.method == 'GET':
         return render(request, 'usuario/login.html',{
         'form': AuthenticationForm
@@ -51,5 +49,5 @@ def iniciarsesion (request):
             })
         else:
             login(request, user)
-            return redirect('productoss')
+            return redirect('productos')
         

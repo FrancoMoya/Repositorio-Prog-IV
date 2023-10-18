@@ -1,7 +1,7 @@
 from django.db import models
 from aplicaciones.producto.models import Producto
 from aplicaciones.carrito.models import Carrito
-from django.contrib.auth.models import User
+from aplicaciones.usuario.models import Customer
 from django.core.exceptions import ValidationError
 
 def validate_two_digit(value):
@@ -15,7 +15,7 @@ class Descuentos (models.Model):
     valor = models.IntegerField('Valor de descuento', null=True, blank=True)
     productos = models.ManyToManyField (Producto, through = 'DescuentoProducto')
     carritos = models.ManyToManyField (Carrito, through = 'DescuentoCarrito')
-    usuarios = models.ManyToManyField (User, through = 'DescuentoUsuario')
+    customer = models.ManyToManyField (Customer, through = 'DescuentoUsuario')
     class Meta:
         verbose_name = ('Descuento')
         verbose_name_plural = ('Descuentos')
@@ -50,7 +50,7 @@ class DescuentoCarrito (models.Model):
 
 class DescuentoUsuario (models.Model):
     id_descuento = models.ForeignKey (Descuentos, on_delete=models.CASCADE)
-    id_usuario = models.ForeignKey (User, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey (Customer, on_delete=models.CASCADE)
     fecha_venc = models.DateField('Fecha de vencimiento')
     class Meta:
         verbose_name = ('Descuento a Usuarios')

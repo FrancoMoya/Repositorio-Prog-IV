@@ -16,18 +16,31 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-#Importo la vista
-from aplicaciones.empleado.views import IndexView, PruebaListVIew, ProductosView
-from aplicaciones.usuario import views
 
+from django.conf.urls.static import static
+from django.conf import settings
+#Importo la vista
+#from aplicaciones.empleado.views import IndexView, PruebaListVIew, ProductosView
+from aplicaciones.usuario.views import home, registro, cerrar_sesion, iniciar_sesion
+from aplicaciones.carrito.views import updateItem
+from aplicaciones.producto.views import productos, productosItems
+from aplicaciones.categoria.views import categorias
+from aplicaciones.carrito.views import carrito, pago
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', IndexView.as_view(), name = 'home'),
-    path('productos/', ProductosView.as_view(), name = 'productos'),
-    path('lista/', PruebaListVIew.as_view()),
-    path('', views.homee, name = 'homee'),
-    path('signup/', views.signup, name = 'signup'),
-    path('productoss/', views.productos, name = 'productoss'),
-    path('logout/', views.cerrarsesion, name = 'logout'),
-    path('login/', views.iniciarsesion, name = 'login')
+    #path('home/', IndexView.as_view(), name = 'home'),
+    #path('productos/', ProductosView.as_view(), name = 'productos'),
+    #path('lista/', PruebaListVIew.as_view()),
+    path('', home, name = 'home'),
+    path('registro/', registro, name = 'registro'),
+    path('productos/', productos, name = 'productos'),
+    path('productosItems/', productosItems, name = 'productosItems'),
+    path('logout/', cerrar_sesion, name = 'logout'),
+    path('login/', iniciar_sesion, name = 'login'),
+    path('update_item/', updateItem, name = 'updateItem'),
+    path('carrito/', carrito, name = 'carrito'),
+    path('pago/', pago, name = 'pago'),
+    path('categorias/', categorias, name = 'categorias'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

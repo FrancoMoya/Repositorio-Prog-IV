@@ -1,3 +1,7 @@
 from django.shortcuts import render
-
-# Create your views here.
+from aplicaciones.categoria.models import Categoria
+def categorias (request):
+    categorias = Categoria.objects.all()
+    return render(request, 'categoria/categoria.html', {
+        'categorias': categorias
+    })

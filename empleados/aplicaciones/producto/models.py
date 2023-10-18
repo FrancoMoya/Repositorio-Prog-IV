@@ -13,6 +13,7 @@ class Producto (models.Model):
     )
     id_producto = models.BigAutoField('ID', primary_key=True)
     nombre = models.CharField('Nombre', max_length=50)
+    imagen = models.ImageField('Imagen', null=True, blank=True)
     codigo = models.CharField('Código', max_length=50)
     medida = models.DecimalField('Medida', max_digits=6, decimal_places=2)
     tipo_medida = models.CharField('Tipo de medida', max_length=1, choices=MEDIDAS_CHOICES)
@@ -33,3 +34,11 @@ class Producto (models.Model):
     
     def __str__(self):
         return self.codigo+' - '+self.nombre
+    #Para que acceda a la imagen como un atributo y no como un metodo
+    @property
+    def imagenURL(self):
+        try:
+            url = self.imagen.url
+        except:
+            url = ''
+        return url

@@ -1,4 +1,4 @@
-from django.db import models
+"""from django.db import models
 from aplicaciones.pedido.models import Pedido
 class DetallePedido (models.Model):
     id_detalle_pedido = models.BigAutoField('ID',primary_key=True)
@@ -12,3 +12,4 @@ class DetallePedido (models.Model):
     
     def __str__(self):
         return f"{self.id_detalle_pedido} - {self.pedido.id_pedido} - User: {self.pedido.usuario.username}"
+        """

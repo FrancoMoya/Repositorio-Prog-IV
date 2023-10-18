@@ -1,0 +1,20 @@
+{% extends 'usuario/base.html' %}
+
+{% block content %}
+<h1>categoriasss</h1>
+
+<ul>
+    {% for categoria in categorias %}
+
+    <div class="card p-1 text-center" style="width: 12rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">{{categoria.nombre}}</p>
+            <p class="card-text">{{categoria.sigla}}</p>
+        </div>
+    </div>
+
+    {% endfor %}
+</ul>
+
+{% endblock %}

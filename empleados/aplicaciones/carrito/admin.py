@@ -4,7 +4,7 @@ from .models import Carrito, CarritoProducto
 @admin.register(Carrito)
 class CarritoAdmin (admin.ModelAdmin):
     list_display = (
-        'usuario',
+        'customer',
         'mostrar_productos',
     )
     def mostrar_productos(self, obj):
